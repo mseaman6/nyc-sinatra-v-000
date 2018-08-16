@@ -24,7 +24,6 @@ describe LandmarksController do
     visit '/landmarks/new'
     fill_in :landmark_name, :with => "Arc de Triomphe"
     fill_in :landmark_year_completed, :with => 1806
-    binding.pry
     click_button "Create New Landmark"
     expect(Landmark.all.count).to eq(2)
   end
