@@ -1,3 +1,5 @@
+require 'pry'
+
 class LandmarksController < ApplicationController
 
   get '/landmarks' do
@@ -12,7 +14,6 @@ class LandmarksController < ApplicationController
     binding.pry
     @landmark = Landmark.create(params[:landmark])
     @landmark.save
-    binding.pry
     redirect "/landmarks/#{@landmark.id}"
   end
 
