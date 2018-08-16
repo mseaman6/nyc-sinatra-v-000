@@ -3,7 +3,6 @@ require 'pry'
 class LandmarksController < ApplicationController
 
   get '/landmarks' do
-    binding.pry
     erb :'/landmarks/index'
   end
 
