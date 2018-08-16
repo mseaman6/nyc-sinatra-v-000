@@ -14,8 +14,7 @@ class FiguresController < ApplicationController
       @figure.titles << Title.create(params[:title])
     end
     if !params[:landmark][:name].empty?
-      new_landmark = Landmark.create(params[:landmark])
-      @figure.landmarks << new_landmark
+      @figure.landmarks << Landmark.create(params[:landmark])
     end
     @figure.save
     redirect "/figures/#{@figure.id}"
@@ -35,21 +34,10 @@ class FiguresController < ApplicationController
     @figure = Figure.find(params[:id])
     @figure.update(params[:figure])
     if !params[:title][:name].empty?
-<<<<<<< HEAD
       @figure.titles << Title.create(params[:title])
     end
     if !params[:landmark][:name].empty?
-      new_landmark = Landmark.create(params[:landmark])
-      @figure.landmarks << new_landmark
-=======
-      @figure.title = Title.find_or_create_by(name: params[:title][:name])
-    end
-    if !params[:landmark][:name].empty?
-      new_landmark = Landmark.find_or_create_by(name: params[:landmark][:name])
-      new_landmark.year_completed = params[:landmark][:year_completed]
-      new_landmark.save
-      @figure.landmark = new_landmark
->>>>>>> 46cc81bec61cf4c14881ba6acfbd8890ee187f00
+      @figure.landmarks << Landmark.create(params[:landmark])
     end
     @figure.save
     redirect "/figures/#{@figure.id}"
