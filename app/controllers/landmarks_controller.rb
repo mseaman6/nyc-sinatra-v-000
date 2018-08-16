@@ -10,13 +10,6 @@ class LandmarksController < ApplicationController
     erb :'landmarks/new'
   end
 
-  post '/landmarks' do
-    binding.pry
-    @landmark = Landmark.create(params[:landmark])
-    @landmark.save
-    redirect "/landmarks/#{@landmark.id}"
-  end
-
   get '/landmarks/:id/edit' do
     @landmark = Landmark.find(params[:id])
     erb :'/landmarks/edit'
@@ -30,6 +23,12 @@ class LandmarksController < ApplicationController
   post '/landmarks/:id' do
     @landmark = Landmark.find(params[:id])
     @landmark.update(params[:landmark])
+    @landmark.save
+    redirect "/landmarks/#{@landmark.id}"
+  end
+
+  post '/landmarks' do
+    @landmark = Landmark.create(params[:landmark])
     @landmark.save
     redirect "/landmarks/#{@landmark.id}"
   end
